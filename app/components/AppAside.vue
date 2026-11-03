@@ -55,7 +55,7 @@ const friendSites = ref([
   },
   {
     href: "https://weibo.com/u/1257866011",
-    text: "新浪微博"
+    text: "新浪微博(半年可见)"
   },
   {
     href: "https://blog.sina.com.cn/u/1257866011",
