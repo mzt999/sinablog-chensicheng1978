@@ -3,7 +3,7 @@
     <p>
       <span class="blog-tag"
        v-for="(tag, index) in tags" :key="index">
-         <nuxt-link :to="'/post/tag/' + tag.name">
+         <nuxt-link :to="'/post/tag/' + encodeURIComponent(tag.name)">
            <i class="fa fa-tag"></i>
            {{tag.name}}: {{tag.len}}
          </nuxt-link>

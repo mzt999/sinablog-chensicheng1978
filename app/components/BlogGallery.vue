@@ -29,7 +29,7 @@
           </span>
           <span v-for="(tag, index) in blog.tags" :key="index"
           class="blog-tag">
-            <nuxt-link :to="'/post/tag/' + tag">
+            <nuxt-link :to="'/post/tag/' + encodeURIComponent(tag)">
               <i class="fa fa-tag" style="color:inherit;"></i>
               {{tag}}
             </nuxt-link>
