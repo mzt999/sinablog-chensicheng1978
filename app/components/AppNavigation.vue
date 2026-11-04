@@ -17,7 +17,7 @@
             <i class="fa" :class="link.fa_class"></i>
             {{link.title}}
           </nuxt-link>
-          <a v-if="link.target=='otherSite'" 
+          <a v-if="link.target=='otherSite'" target="_blank"
           :href="link.path" class="no-decor-link">
             <i class="fa" :class="link.fa_class"></i>
             {{link.title}}
@@ -55,7 +55,7 @@ const friendSites = ref([{
   {
     path: "https://mzt999.github.io/weibo-chensicheng1978",
     title: "微博备份",
-    target: "external",
+    target: "otherSite",
     fa_class: "fa-weibo"
   },
 ])
