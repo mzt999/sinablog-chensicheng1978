@@ -54,7 +54,7 @@ const friendSites = ref([{
   },
   {
     path: "https://mzt999.github.io/weibo-chensicheng1978",
-    title: "微博",
+    title: "微博备份",
     target: "otherSite",
     fa_class: "fa-weibo"
   },

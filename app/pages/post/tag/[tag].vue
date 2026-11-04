@@ -42,16 +42,16 @@ const { data } = await useAsyncData(
 const blogs = data.value;
 const tempObj = {};
 const blog_by_year = [];
-for (let m = 0; m < blogs.length; m++) {
-  const year = blogs[m].meta.date.substring(0,4);
+for (let m = blogs.length; m > 0 ; m--) {
+  const year = blogs[m-1].meta.date.substring(0,4);
   if (!tempObj[year]) {
     tempObj[year] = [];
   }
-  tempObj[year].push(blogs[m]);
+  tempObj[year].push(blogs[m-1]);
 }
 const key_arr = Object.keys(tempObj);
-for (let n = 0; n < key_arr.length; n++) {
-  blog_by_year.push(tempObj[key_arr[n]]);
+for (let n = key_arr.length; n > 0; n--) {
+  blog_by_year.push(tempObj[key_arr[n-1]]);
 }
 definePageMeta( {
   layout: "post",

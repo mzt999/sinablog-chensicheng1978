@@ -95,7 +95,7 @@ const data2 = await useAsyncData(
 let prevNext = data2.data.value;
 for (let i = 0; i<2; i++) {
   if(prevNext[i]) {
-    prevNext[i].slug = prevNext[i].path.substring(17,prevNext[i].path.length)
+    prevNext[i].slug = prevNext[i].path.replace("/blog/","")
   }
 }
 
@@ -107,7 +107,6 @@ useSeoMeta({
   title: () => `陈思诚:${blog.title}`,
   date: () => blog.meta.date,
   description: () => blog.description,
-  keywords: () => blog.meta.keywords.join(','),
 })
 </script>
 
@@ -164,7 +163,7 @@ article blockquote{
   border-left: .25em solid #dfe2e5;
 }
 article img {
-  max-width: 100px;
+  max-width: 300px;
 }
 .toc a,.toc a:visited,.toc a:active, article a, article a:visited {
   color: black;

@@ -1,23 +1,19 @@
 {
-  "name": "el1314",
-  "private": true,
+  "name": "sinablog",
   "type": "module",
+  "private": true,
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxt/a11y": "^1.0.0-alpha.1",
-    "@nuxt/content": "^3.15.2",
-    "@nuxt/eslint": "^1.17.0",
-    "@nuxtjs/eslint-module": "^4.1.0",
-    "@nuxtjs/html-validator": "^2.1.0",
+    "@nuxt/content": "^3.16.2",
     "better-sqlite3": "^13.0.3",
-    "eslint": "^10.9.1",
-    "nuxt": "^4.5.2",
-    "vue": "^3.5.41",
-    "vue-router": "^5.2.0"
+    "nuxt": "^4.6.3",
+    "vue": "^3.5.44",
+    "vue-router": "^5.4.0"
   }
 }

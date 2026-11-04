@@ -50,16 +50,16 @@ const latestBlog = data2.data.value.latestBlog;
 
 const friendSites = ref([
   {
-    href: "https://mzt999.github.io/weibo-chensicheng1978",
-    text: "微博备份"
+    href: "https://blog.sina.com.cn/u/1257866011",
+    text: "新浪博客"
   },
   {
     href: "https://weibo.com/u/1257866011",
     text: "新浪微博(半年可见)"
   },
   {
-    href: "https://blog.sina.com.cn/u/1257866011",
-    text: "新浪博客"
+    href: "https://mzt999.github.io/weibo-chensicheng1978",
+    text: "新浪微博备份"
   },
 ])
 </script>
