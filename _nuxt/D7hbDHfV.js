@@ -1,0 +1,1 @@
+import{n as e,t}from"./Dt2OnCi8.js";import{t as n}from"./CLGy_q9W.js";import{L as r,V as i,b as a,f as o,h as s}from"./DcSnE-pd.js";import{t as c}from"#entry";var l={},u={class:`container-main`},d={class:`blog-wrap`};function f(c,l,f,p,m,h){let g=e,_=n,v=t;return r(),s(`div`,u,[a(g),o(`div`,d,[i(c.$slots,`default`),a(_)]),a(v)])}var p=c(l,[[`render`,f]]);export{p as default};

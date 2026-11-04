@@ -1,0 +1,1 @@
+import{b as e}from"./pHo_GGnH.js";import{S as t}from"./DcSnE-pd.js";var n=t({__name:`[...slug]`,setup(t){throw e({statusCode:404,message:`页面未找到`})}});export{n as default};
