@@ -11,8 +11,6 @@ tags: [张国荣,守望者,电影,传奇]
 
 ![天边外&nbsp;祭奠](/pic/4af9831bt831babcf795f.jpg)
 
-![天边外&nbsp;祭奠](http://photo.blog.sina.com.cn/showpic.html#blogid=4af9831b0100hnjh&url=http://s16.sinaimg.cn/orignal/4af9831bt831babcf795f)
-
 背后的公路延伸于无限，我们的双眼同样未知……困惑的一定不只是我，是所有的世人……
 
 ![天边外&nbsp;祭奠](/pic/4af9831bt831bb5cf6b5d.jpg)
