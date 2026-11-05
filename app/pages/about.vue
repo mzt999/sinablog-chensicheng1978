@@ -2,7 +2,7 @@
   <main class="blog-main">
     <p>陈思诚的新浪博客备份</p>
     <p>粉丝自用存档，如有侵权，请 <a href="https://wj.qq.com/s2/14668810/d2da/" target="_blank">联系我<i class="fa fa-external-link"></i></a></p>
-    <p>从Wayback Machine恢复了1个已隐藏网页 <nuxt-link to="/sinablog-chensicheng1978/post/blog_4af9831b0100de35">背影，前行……</nuxt-link></p>
+    <p>从Wayback Machine恢复了1个已隐藏网页 <nuxt-link to="/post/blog_4af9831b0100de35">背影，前行……</nuxt-link></p>
     <p>从Wayback Machine找到7个隐藏网页，但无法恢复：</p>
     <ol>
       <li>
