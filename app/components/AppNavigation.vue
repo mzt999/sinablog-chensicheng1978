@@ -53,6 +53,12 @@ const friendSites = ref([{
     fa_class: "fa-archive"
   },
   {
+    path: "/pic",
+    title: "相册",
+    target: "internal",
+    fa_class: "fa-image"
+  },
+  {
     path: "https://mzt999.github.io/weibo-chensicheng1978",
     title: "微博备份",
     target: "otherSite",

@@ -1,21 +1,34 @@
+<template>
+  <main class="blog-main">
+    <ContentRenderer :value="page"/>
+  </main>
+</template>
+
 <script setup lang="ts">
-// const route = useRoute()
+const route = useRoute()
+const slug = route.params.slug;
 
-// const { data: page } = await useAsyncData('page-' + route.path, () => {
-//   return queryCollection('content').path(route.path).first()
-// })
+const {data} = await useAsyncData(
+  `landingpage-${slug[0]}`,
+  async () => {
+    return await queryCollection('landingpage').where('slug', '=', slug[0]).first()
+  },
+)
+const page = data.value;
 
-// if (!data.value) {
-//   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
-// }
+if (!data.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
+}
 
 // 所有匹配到的路径都不存在，直接抛出 404
-throw createError({ statusCode: 404, message: '页面未找到' })
-</script>
+// throw createError({ statusCode: 404, message: '页面未找到' })
 
-<template>
-  <ContentRenderer
-    v-if="page"
-    :value="page"
-  />
-</template>
+
+definePageMeta( {
+  layout: "page",
+});
+useSeoMeta({
+  title: () => "陈思诚|"+page.title,
+  description: () => "陈思诚|"+page.description,
+})
+</script>

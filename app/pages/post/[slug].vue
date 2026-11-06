@@ -69,21 +69,19 @@
     <ClientOnly>
       <ImageZoom ref="imageZoomRef"/>
     </ClientOnly>
-    <div id="disqus_thread">
-    </div>
   </main>
 </template>
 
 <script setup>
 const route = useRoute()
 const slug = route.params.slug
-const data1 = await useAsyncData(
+const {data} = await useAsyncData(
   `blog-post-slug-${slug}`,
   async () => {
     return await queryCollection('blog').where('slug', '=', slug).first()
   },
 )
-const blog = data1.data.value;
+const blog = data.value;
 
 const data2 = await useAsyncData(
   `surround-${slug}`, 
@@ -189,9 +187,6 @@ a#comment-link {
   padding: 10px;
   color: #666;
   background-color: rgba(0,0,0,0.025);
-}
-#disqus_thread {
-  margin-top: 60px;
 }
 .prev-next {
   margin: 20px auto;
