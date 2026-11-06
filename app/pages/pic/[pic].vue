@@ -18,7 +18,7 @@
       <div class="pic-container-outer">
         <div class="pic-container-inner">
           <div class="col-4" v-for="(url) in picURLs">
-            <img :src="'/'+url">
+            <img :src="'/sinablog-chensicheng1978/'+url">
           </div>
         </div>
       </div>
