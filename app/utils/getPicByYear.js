@@ -24,7 +24,6 @@ export default async (queryCollection, myYear ,error) => {
 
     // 2) 年份倒序、每年内月份倒序
     const years = [...yearMap.keys()].sort((a, b) => b.localeCompare(a));
-
     const data2 = {};
     const yearlyCount = [];
 
