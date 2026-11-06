@@ -1,6 +1,6 @@
 export default async (queryCollection, myYear ,error) => {
-  const { data} = await useAsyncData('pic-album', () =>
-    queryCollection('pic').order('slug', 'DESC').all()
+  const { data} = await useAsyncData('pic-gallery', () =>
+    queryCollection('gallery').order('slug', 'DESC').all()
   )
   const picData = data.value;
   var myYear2 = myYear?String(myYear):picData[0].postTime.substring(0,4);

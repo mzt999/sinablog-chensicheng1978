@@ -18,7 +18,7 @@
       <div class="pic-container-outer">
         <div class="pic-container-inner">
           <div class="col-4" v-for="(url) in picURLs">
-            <img :src="'/sinablog-chensicheng1978/'+url">
+            <img :src="url">
           </div>
         </div>
       </div>
@@ -29,31 +29,7 @@
   </main>
 </template>
 
-<script setup>
-const {data}  = await useAsyncData(
-  'pic', // 缓存键，可自定义
-  async () => {
-    return getPicByYear(queryCollection)
-  }
-)
-const picByMonth = data.value.yearData;//[["10", ["asdf.jpg","fdsa.jpg"]],["09", ["asdf.jpg","fdsa.jpg"]]]
-const yearlyCount = data.value.yearlyCount;
-const currYear = yearlyCount[0].year;
-
-definePageMeta( {
-  layout: "page",
-});
-
-useSeoMeta({
-  title: () => "陈思诚|相册"+currYear,
-  description: () => "陈思诚的相册",
-})
-</script>
-
 <style>
-.year-btn {
-  display: inline-block;
-}
 .pic-month-unit {
   background: white;
 }
@@ -104,3 +80,27 @@ useSeoMeta({
   }
 }
 </style>
+
+<script setup>
+const route = useRoute()
+const currYear = computed(() => parseInt(route.params.gallery) || 1);
+const myYear = currYear.value;
+
+const {data}  = await useAsyncData(
+  `pic-${myYear}`, // 缓存键，可自定义
+  async () => {
+    return getPicByYear(queryCollection, myYear)
+  }
+)
+const picByMonth = data.value.yearData;//[["10", ["asdf.jpg","fdsa.jpg"]],["09", ["asdf.jpg","fdsa.jpg"]]]
+const yearlyCount = data.value.yearlyCount;
+
+definePageMeta( {
+  layout: "page",
+});
+
+useSeoMeta({
+  title: () => "陈思诚|相册"+myYear,
+  description: () => "陈思诚的相册",
+})
+</script>

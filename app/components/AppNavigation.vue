@@ -53,7 +53,7 @@ const friendSites = ref([{
     fa_class: "fa-archive"
   },
   {
-    path: "/pic",
+    path: "/gallery",
     title: "相册",
     target: "internal",
     fa_class: "fa-image"

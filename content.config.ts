@@ -13,9 +13,9 @@ export default defineContentConfig({
           categories: z.array(z.string()).default([]),
         }),
     }),
-    pic: defineCollection({
+    gallery: defineCollection({
       type: 'data',
-      source: 'pic.csv',
+      source: 'gallery.csv',
       schema: 
         z.object({
           slug: z.string(),
