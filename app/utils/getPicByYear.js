@@ -14,7 +14,7 @@ export default async (queryCollection, myYear ,error) => {
       const monthMap = yearMap.get(year);
       if (!monthMap.has(month)) monthMap.set(month, []);
       monthMap.get(month).push(
-        ...picIds.split(";").filter(Boolean).filter(id => !/\.gif$/i.test(id)).map(id => `/pic/${id}`)
+        ...picIds.split(";").filter(Boolean).filter(id => !/\.gif$/i.test(id)).map(id => `pic/${id}`)
       );
     });
 
