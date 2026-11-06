@@ -92,6 +92,7 @@ const {data}  = await useAsyncData(
     return getPicByYear(queryCollection, myYear)
   }
 )
+
 const picByMonth = data.value.yearData;//[["10", ["asdf.jpg","fdsa.jpg"]],["09", ["asdf.jpg","fdsa.jpg"]]]
 const yearlyCount = data.value.yearlyCount;
 
