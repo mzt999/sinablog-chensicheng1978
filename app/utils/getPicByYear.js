@@ -13,6 +13,7 @@ export default async (queryCollection, myYear ,error) => {
       if (!yearMap.has(year)) yearMap.set(year, new Map());
       const monthMap = yearMap.get(year);
       if (!monthMap.has(month)) monthMap.set(month, []);
+      if (/\.gif/i.test(picIds)&&!/\.jpg/i.test(picIds)) return;
       monthMap.get(month).push(
         ...picIds.split(";").filter(Boolean).filter(id => !/\.gif$/i.test(id)).map(id => `pic/${id}`)
       );
