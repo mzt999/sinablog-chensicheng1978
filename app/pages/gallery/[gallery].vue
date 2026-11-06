@@ -4,7 +4,7 @@
       <div class="side-left">
         <p><span v-for="(item) in yearlyCount" class="year-btn"
           :key="'year'+item.year">
-          <nuxt-link :to="'/pic/'+item.year">{{item.year}}年({{item.picCount}})</nuxt-link>
+          <nuxt-link :to="'/gallery/'+item.year">{{item.year}}年({{item.picCount}})</nuxt-link>
           <span>
           </span>
           &nbsp;
