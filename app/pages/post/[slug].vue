@@ -199,6 +199,7 @@ a#comment-link {
   justify-content: space-between;
 }
 .prev-next a {
+  min-width: 100px;
   display: block;
 }
 .prev, .next {
