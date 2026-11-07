@@ -2,7 +2,7 @@
 date: 2010-04-01 00:55
 slug: blog_4af9831b0100hnjh
 title: 天边外 祭奠
-description: 天边外 祭奠
+description: “天边外祭奠”是我大学时期自编自导自演的一部话剧。
 categories: [默认,有图]
 tags: [张国荣,守望者,电影,传奇]
 ---

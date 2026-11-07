@@ -2,7 +2,7 @@
 date: 2008-12-16 23:28
 slug: blog_4af9831b0100bkca
 title: 长相守
-description: 长相守
+description: 《小陈同学参与创作“命运”的小小感言》
 categories: [默认]
 tags: [杂谈]
 ---

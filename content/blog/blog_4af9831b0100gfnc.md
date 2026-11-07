@@ -2,7 +2,7 @@
 date: 2009-12-23 14:15
 slug: blog_4af9831b0100gfnc
 title: 光影话流年
-description: 光影话流年
+description: 录制了《光影星播客》，硕大的屏幕播着我这几年的照片，有些恍然，如梦
 categories: [默认]
 tags: [戛纳,陈思成,娱乐,光影星播客]
 ---

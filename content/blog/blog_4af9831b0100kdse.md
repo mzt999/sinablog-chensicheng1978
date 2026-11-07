@@ -2,7 +2,7 @@
 date: 2010-07-24 21:51
 slug: blog_4af9831b0100kdse
 title: 请把暑期档留给快乐和孩子……
-description: 请把暑期档留给快乐和孩子……
+description: 为我所喜爱和投入了诸多热情的“小罗汉”加油！
 categories: [默认,有图]
 tags: [杂谈]
 ---

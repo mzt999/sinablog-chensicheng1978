@@ -2,7 +2,7 @@
 date: 2009-05-31 18:21
 slug: blog_4af9831b0100dgqa
 title: 《春风》获奖印证华语电影的春天
-description: 《春风》获奖印证华语电影的春天
+description: “世界电影的中心在向中东甚至远东转移。”
 categories: [默认]
 tags: [戛纳,春风,陈思成,娱乐]
 ---

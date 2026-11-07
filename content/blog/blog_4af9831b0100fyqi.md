@@ -2,8 +2,8 @@
 date: 2009-11-18 03:30
 slug: blog_4af9831b0100fyqi
 title: 尘缘
-description: 尘缘
-categories: [默认]
+description: 听着新歌“尘缘”，百感交集……
+categories: [我的音乐]
 tags: [杂谈]
 ---
 夜了。

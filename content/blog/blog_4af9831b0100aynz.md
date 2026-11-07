@@ -2,7 +2,7 @@
 date: 2008-10-14 23:41
 slug: blog_4af9831b0100aynz
 title: 无言
-description: 无言
+description: 都说时间是一切情感的大敌，所以……我小心翼翼的拥有，从没渴求永远。
 categories: [默认]
 tags: [杂谈]
 ---

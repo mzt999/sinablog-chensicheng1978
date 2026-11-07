@@ -1,5 +1,14 @@
 <template>
   <main class="blog-main">
+    <p>
+      <span class="blog-tag"
+       v-for="(tag, index) in tags" :key="index">
+         <nuxt-link :to="'/post/tag/' + encodeURIComponent(tag.name)">
+           <i class="fa fa-tag"></i>
+           {{tag.name}}: {{tag.len}}
+         </nuxt-link>
+     </span>
+    </p>
     <h1>
       标签: {{myTag}}
     </h1>
@@ -32,7 +41,7 @@
 
 <script setup>
 const route = useRoute()
-const myTag = route.params.tag
+const myTag = route.params.tag;
 const { data } = await useAsyncData(
   `blog-tag-${myTag}`, // 缓存键，可自定义
   async () => {
@@ -53,6 +62,14 @@ const key_arr = Object.keys(tempObj);
 for (let n = key_arr.length; n > 0; n--) {
   blog_by_year.push(tempObj[key_arr[n-1]]);
 }
+
+const data2 = await useAsyncData(
+  'above-all-blogs-tags',
+  async () => {
+    return await getTags(queryCollection)
+  }
+)
+const tags = data2.data.value.tags;
 definePageMeta( {
   layout: "post",
 });

@@ -2,7 +2,7 @@
 date: 2009-04-10 20:04
 slug: blog_4af9831b0100coqo
 title: 一剪梅
-description: 一剪梅
+description: 《一剪梅·红藕香残玉簟秋》
 categories: [默认,有图]
 tags: [相思,离愁,杂谈]
 ---

@@ -2,7 +2,7 @@
 date: 2010-01-29 23:06
 slug: blog_4af9831b0100gvim
 title: 李晨这个人
-description: 李晨这个人
+description: 我相信晨儿，且一定力挺！全力挺！！
 categories: [默认]
 tags: [杂谈]
 ---

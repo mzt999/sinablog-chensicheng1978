@@ -2,7 +2,7 @@
 date: 2010-07-23 14:09
 slug: blog_4af9831b0100kany
 title: 所谓自由！！！！！！！！
-description: 所谓自由！！！！！！！！
+description: 我原来以为博客是自己的！可弄了半天，是谁的我就不明白了？？？？？？
 categories: [默认,有图]
 tags: [杂谈]
 ---
