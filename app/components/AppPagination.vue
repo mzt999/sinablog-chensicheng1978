@@ -1,6 +1,11 @@
 <template>
   <div class="page-container">
-  	<div style="text-align: center;">第{{currentPage}}页，共{{totalPages}}页</div>
+  	<!-- <div style="text-align: center;">第{{currentPage}}页，共{{totalPages}}页</div> -->
+  	<div style="text-align: center;">
+  		<input @keyup.enter="goToPage" type="number" style="font-size:16px;width:50px;height:22px;" v-model="jumpPageNum">
+  		<button @click="goToPage" style="width: 50px;height: 26px;border-radius: 2px;border: solid 1px silver;">跳转</button>
+  		{{currentPage}}/{{totalPages}}页
+  	</div>
   	<div class="pagination">
   		<span v-if="currentPage == 1" :class="disabledStyle">
 		  首页
@@ -53,8 +58,6 @@
 </template>
 
 <script setup>
-const buttonStyles = ref("page-prev-next");
-const disabledStyle = ref("page-prev-next-disabled");
 const props = defineProps({
   totalPages: {
     type: Number,
@@ -69,10 +72,18 @@ const props = defineProps({
     default: 5,
   },
 });
+const router = useRouter();
+const route = useRoute();
+const jumpPageNum = ref(Number(route.params.page) || 1);
+const buttonStyles = ref("page-prev-next");
+const disabledStyle = ref("page-prev-next-disabled");
 const prevPage = props.currentPage > 1 ? props.currentPage - 1 : 1;
 const nextPage = props.currentPage < props.totalPages
 				        ?props.currentPage - 0 + 1
 				        :props.totalPages;
+const goToPage = () => {
+  router.push(`/page/${jumpPageNum.value}`).catch(() => {})
+}
 </script>
 
 <style>

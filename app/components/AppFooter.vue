@@ -2,7 +2,7 @@
   <footer>
     <p>陈思诚的新浪博客备份<br>
     	查看
-    	<a href="https://mzt999.github.io/weibo-chensicheng1978" class="no-decor-link">
+    	<a href="https://mzt999.github.io/weibo-chensicheng1978" class="no-decor-link" target="_blank">
     		<strong>微博备份</strong>
 	    	<i class="fa fa-weibo font-20"></i>
 	    </a><br>
