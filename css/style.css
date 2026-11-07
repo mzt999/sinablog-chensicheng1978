@@ -112,10 +112,8 @@ a, a:visited {
   font-family: Arial;
 }
 .blog-link {
-	min-width: 100px;
   text-decoration: none;
 	font-weight: bold;
-	display: inline-block;
 }
 .blog-link:hover {
   color: gray;
