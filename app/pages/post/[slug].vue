@@ -26,6 +26,7 @@
       </span>
     </p>
     <p class="blog-desc" v-html="blog.description"></p>
+    <p>原贴地址<a :href="'https://blog.sina.com.cn/s/'+blog.slug+'.html'" target="_blank">https://blog.sina.com.cn/s/{{blog.slug}}.html</a></p>
     <article>
       <ul class="toc">
         <li class='toc2'
