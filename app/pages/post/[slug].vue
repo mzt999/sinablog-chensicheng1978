@@ -26,10 +26,6 @@
       </span>
     </p>
     <p class="blog-desc" v-html="blog.description"></p>
-    <div style="padding:10px;background:#f5f5f5;">
-      新浪博客原贴地址<br>
-      <a :href="'https://blog.sina.com.cn/s/'+blog.slug+'.html'" target="_blank">https://blog.sina.com.cn/s/{{blog.slug}}.html</a>
-    </div>
     <article>
       <ul class="toc">
         <li class='toc2'
@@ -46,6 +42,10 @@
       </ul>
       <ContentRenderer :value="blog"/>
     </article>
+    <div style="padding:10px;background:#f5f5f5;">
+      新浪博客原贴地址<br>
+      <a :href="'https://blog.sina.com.cn/s/'+blog.slug+'.html'" target="_blank">https://blog.sina.com.cn/s/{{blog.slug}}.html</a>
+    </div>
     <div class="prev-next">
        <div class="prev">
         <nuxt-link v-if="prevNext[0]" 
