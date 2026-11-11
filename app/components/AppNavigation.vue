@@ -3,10 +3,10 @@
     <div class="nav-wrap">
       <header> 
         <nuxt-link class="no-decor-link nav-home" to="/">
-          陈思诚的博客
+          {{author_name}}的博客
         </nuxt-link>
         <div class="nav-subtitle">
-          新浪博客内容备份
+          {{site_description}}
         </div>
       </header>
       <ul class="nav-ul">
@@ -34,35 +34,10 @@
 </template>
 
 <script setup>
-const navLinks = ref([{
-    path: "/",
-    title: "博客首页",
-    target: "internal",
-    fa_class: "fa-home"
-  },
-  {
-    path: "/about",
-    title: "关于",
-    target: "internal",
-    fa_class: "fa-user"
-  },
-  {
-    path: "/post",
-    title: "归档",
-    target: "internal",
-    fa_class: "fa-archive"
-  },
-  {
-    path: "/gallery",
-    title: "相册",
-    target: "internal",
-    fa_class: "fa-image"
-  },
-  {
-    path: "https://mzt999.github.io/weibo-chensicheng1978",
-    title: "微博备份",
-    target: "otherSite",
-    fa_class: "fa-weibo"
-  },
-])
+const { data: settings } = await useAsyncData('settings', () => {
+  return queryCollection('settings').first()
+})
+const author_name = settings.value.author_name;
+const site_description = settings.value.site_description;
+const navLinks = settings.value.navLinks;
 </script>

@@ -18,7 +18,7 @@
       <div class="pic-container-outer">
         <div class="pic-container-inner">
           <div class="col-4" v-for="(url) in picURLs">
-            <img :src="baseURL+url">
+            <img :src="baseURL+url" loading="lazy">
           </div>
         </div>
       </div>
@@ -89,14 +89,7 @@ const myYear = currYear.value;
 const config = useRuntimeConfig()
 // baseURL 默认是 '/'，如果部署在子路径，它会是 '/my-project/' 这样的值
 const baseURL = config.app.baseURL;
-const author = config.app.author;
 
-// const {data}  = await useAsyncData(
-//   `pic-${myYear}`, // 缓存键，可自定义
-//   async () => {
-//     return getPicByYear(queryCollection, myYear)
-//   }
-// )
 const { data } = await useFetch('/api/blog-images', {
   query: { year: myYear, excludeGif: true } // 参数可以自由传递
 })
@@ -108,8 +101,13 @@ definePageMeta( {
   layout: "page",
 });
 
+const { data: settings } = await useAsyncData('settings', () => {
+  return queryCollection('settings').first()
+})
+const author_name = settings.value.author_name;
+
 useSeoMeta({
-  title: () => author+"|相册"+myYear,
-  description: () => author+"的相册",
+  title: () => author_name+"|相册"+myYear,
+  description: () => author_name+"的相册",
 })
 </script>

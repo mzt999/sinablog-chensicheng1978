@@ -73,10 +73,14 @@ const tags = data2.data.value.tags;
 definePageMeta( {
   layout: "post",
 });
-const config = useRuntimeConfig()
-const author = config.app.author;
+
+const { data: settings } = await useAsyncData('settings', () => {
+  return queryCollection('settings').first()
+})
+const author_name = settings.value.author_name;
+
 useSeoMeta({
-  title: () => `${author}|文章标签:${myTag}`,
-  description: () => `${author}|文章标签:${myTag}`,
+  title: () => `${author_name}|文章标签:${myTag}`,
+  description: () => `${author_name}|文章标签:${myTag}`,
 })
 </script>

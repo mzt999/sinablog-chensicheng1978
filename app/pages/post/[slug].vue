@@ -105,10 +105,13 @@ definePageMeta( {
   layout: "post",
 });
 
-const config = useRuntimeConfig()
-const author = config.app.author;
+const { data: settings } = await useAsyncData('settings', () => {
+  return queryCollection('settings').first()
+})
+const author_name = settings.value.author_name;
+
 useSeoMeta({
-  title: () => `${author}:${blog.title}`,
+  title: () => `${author_name}:${blog.title}`,
   date: () => blog.meta.date,
   description: () => blog.description,
 })

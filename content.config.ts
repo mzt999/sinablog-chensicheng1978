@@ -13,6 +13,14 @@ export default defineContentConfig({
           categories: z.array(z.string()).default([]),
         }),
     }),
+    landingpage: defineCollection({
+      type: 'page',
+      source: 'landingpage/*.md',
+      schema: 
+        z.object({
+          slug: z.string(),
+        }),
+    }),
     gallery: defineCollection({
       type: 'data',
       source: 'gallery.csv',
@@ -23,13 +31,24 @@ export default defineContentConfig({
           picIds: z.string(),
         }),
     }),
-    landingpage: defineCollection({
-      type: 'page',
-      source: 'landingpage/*.md',
-      schema: 
-        z.object({
-          slug: z.string(),
-        }),
+    settings: defineCollection({
+      type: 'data', // 关键：表明这是单文件数据，而非页面集合
+      source: 'settings.yml', // 精确指向单个文件
+      schema: z.object({
+        author_name: z.string(),
+        site_description: z.string(),
+        perPage: z.number(),
+        navLinks: z.array(z.object({
+          path: z.string(),
+          title: z.string(),
+          target: z.string(),
+          fa_class: z.string(),
+        })),
+        friendSites: z.array(z.object({
+          href: z.string(),
+          text: z.string(),
+        })),
+      })
     }),
   },
 })

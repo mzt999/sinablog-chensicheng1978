@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <p>陈思诚的新浪博客备份<br>
+    <p>{{site_description}}<br>
     	查看
     	<a href="https://mzt999.github.io/weibo-chensicheng1978" class="no-decor-link" target="_blank">
     		<strong>微博备份</strong>
@@ -17,6 +17,10 @@
 
 <script setup>
 const isHidden = ref(true);
+const { data: settings } = await useAsyncData('settings', () => {
+  return queryCollection('settings').first()
+})
+const site_description = settings.value.site_description;
 function toTop() {
 	document.querySelector(".container-main").scrollIntoView({behavior: 'smooth'})
 }

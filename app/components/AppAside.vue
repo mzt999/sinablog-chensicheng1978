@@ -48,18 +48,8 @@ const data2 = await useAsyncData(
 )
 const latestBlog = data2.data.value.latestBlog;
 
-const friendSites = ref([
-  {
-    href: "https://blog.sina.com.cn/u/1257866011",
-    text: "新浪博客(停更于2010年)"
-  },
-  {
-    href: "https://weibo.com/u/1257866011",
-    text: "新浪微博(半年可见)"
-  },
-  {
-    href: "https://mzt999.github.io/weibo-chensicheng1978",
-    text: "新浪微博备份(2009-2026)"
-  },
-])
+const { data: settings } = await useAsyncData('settings', () => {
+  return queryCollection('settings').first()
+})
+const friendSites = settings.value.friendSites;
 </script>

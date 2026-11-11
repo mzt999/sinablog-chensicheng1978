@@ -56,10 +56,14 @@ for (let n = key_arr.length; n > 0; n--) {
 definePageMeta( {
   layout: "post",
 });
-const config = useRuntimeConfig()
-const author = config.app.author;
+
+const { data: settings } = await useAsyncData('settings', () => {
+  return queryCollection('settings').first()
+})
+const author_name = settings.value.author_name;
+
 useSeoMeta({
-  title: () => author+`|博客分类:${myCategory}`,
-  description: () => author+`|文章分类:${myCategory}`,
+  title: () => author_name+`|博客分类:${myCategory}`,
+  description: () => author_name+`|文章分类:${myCategory}`,
 })
 </script>

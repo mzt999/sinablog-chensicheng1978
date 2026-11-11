@@ -18,7 +18,7 @@
       <div class="pic-container-outer">
         <div class="pic-container-inner">
           <div class="col-4" v-for="(url) in picURLs">
-            <img :src="url">
+            <img :src="url" loading="lazy">
           </div>
         </div>
       </div>
@@ -30,13 +30,6 @@
 </template>
 
 <script setup>
-// const {data}  = await useAsyncData(
-//   'pic', // 缓存键，可自定义
-//   async () => {
-//     return getPicByYear2(queryCollection)
-//   }
-// )
-
 const { data } = await useFetch('/api/blog-images', {
   query: { excludeGif: true } // 参数可以自由传递
 })
@@ -48,11 +41,15 @@ const currYear = yearlyCount[0].year;
 definePageMeta( {
   layout: "page",
 });
-const config = useRuntimeConfig()
-const author = config.app.author;
+
+const { data: settings } = await useAsyncData('settings', () => {
+  return queryCollection('settings').first()
+})
+const author_name = settings.value.author_name;
+
 useSeoMeta({
-  title: () => author+"|相册"+currYear,
-  description: () => author+"的相册",
+  title: () => author_name+"|相册"+currYear,
+  description: () => author_name+"的相册",
 })
 </script>
 

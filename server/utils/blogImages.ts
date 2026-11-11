@@ -36,15 +36,31 @@ function urlToPicFilename(url: string): string {
   if (!url) return ''
   if (/^(data|blob|javascript):/i.test(url)) return ''
 
-  const clean = url.split(/[?#]/)[0]
-  let seg = clean.split('/').filter(Boolean).pop() || ''
-  if (!seg) return ''
+  const trimmed = url.trim()
 
-  if (/\.html?$/i.test(seg)) return ''
-  if (/&690$/.test(seg)) seg = seg.slice(0, -4)
-  if (!/\.[A-Za-z0-9]+$/.test(seg)) seg += '.jpg'
+  // 先取路径末段（去掉 query/fragment），用于 .html 判断
+  const clean = trimmed.split(/[?#]/)[0]
+  const lastSeg = clean.split('/').filter(Boolean).pop() || ''
 
-  return `pic/${seg}`
+  // 0) 路径末段是 .html/.htm → 一律筛掉（无论绝对/相对/裸文件名）
+  if (/\.html?$/i.test(lastSeg)) return ''
+
+  // 1) 外部绝对链接 → 原样返回
+  if (/^(https?:)?\/\//i.test(trimmed)) return trimmed
+
+  // 2) 已经是 pic/ 或 /pic/ 或 ./pic/ 开头 → 保持
+  if (/^(\.\/|\/)?pic\//i.test(trimmed)) return trimmed
+
+  // 3) 纯文件名 → 走本地化规则
+  if (!/[/:\\]/.test(trimmed)) {
+    let seg = lastSeg
+    if (/&690$/.test(seg)) seg = seg.slice(0, -4)
+    if (!/\.[A-Za-z0-9]+$/.test(seg)) seg += '.jpg'
+    return `pic/${seg}`
+  }
+
+  // 4) 其他相对路径 → 原样返回
+  return trimmed
 }
 
 function extractImageFilenames(body: string): string[] {
@@ -123,8 +139,8 @@ export function getImagesByMonth(options: GroupImagesOptions = {}): BlogImagesRe
     let imgs = extractImageFilenames(body)
     if (excludeGif) imgs = imgs.filter(u => !/\.gif$/i.test(u))
     if (!imgs.length) continue
-    items.unshift({ year: ym.year, month: ym.month, images: imgs })
-    // items.push({ year: ym.year, month: ym.month, images: imgs })
+    items.unshift({ year: ym.year, month: ym.month, images: imgs })//月份内降序
+    // items.push({ year: ym.year, month: ym.month, images: imgs })//月份内升序
   }
 
   if (!items.length) return { yearData: [], yearlyCount: [] }

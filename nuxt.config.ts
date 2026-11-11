@@ -1,9 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 var mySiteBase = '/sinablog-chensicheng1978/';//github repository name
+//如果直接是 mygithubid.github.io 的repository，可以写 '/'
 export default defineNuxtConfig({
   app: {
     baseURL: mySiteBase,
-    author: '陈思诚',
     head: {
       meta: [
         { charset: 'utf-8' },

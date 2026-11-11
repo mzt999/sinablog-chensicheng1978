@@ -1,0 +1,31 @@
+author_name: 陈思诚
+site_description: 新浪博客内容备份
+perPage: 20
+navLinks: 
+  - path: "/"
+    title: "博客首页"
+    target: "internal"
+    fa_class: "fa-home"
+  - path: "/about"
+    title: "关于"
+    target: "internal"
+    fa_class: "fa-user"
+  - path: "/post"
+    title: "归档"
+    target: "internal"
+    fa_class: "fa-archive"
+  - path: "/gallery"
+    title: "相册"
+    target: "internal"
+    fa_class: "fa-image"
+  - path: "https://mzt999.github.io/weibo-chensicheng1978"
+    title: "微博备份"
+    target: "otherSite"
+    fa_class: "fa-weibo"
+friendSites:
+  - href: "https://blog.sina.com.cn/u/1257866011"
+    text: "新浪博客(停更于2010年)"
+  - href: "https://weibo.com/u/1257866011"
+    text: "新浪微博(半年可见)"
+  - href: "https://mzt999.github.io/weibo-chensicheng1978"
+    text: "新浪微博备份(2009-2026)"
