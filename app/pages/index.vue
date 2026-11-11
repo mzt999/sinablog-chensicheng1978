@@ -17,13 +17,15 @@ const {data}  = await useAsyncData(
 const blogList = data.value.paginatedArticles;
 const totalPages = data.value.totalPages;
 
+const config = useRuntimeConfig()
+const author = config.app.author;
 
 definePageMeta( {
   layout: "page",
 });
 
 useSeoMeta({
-  title: () => "陈思诚|博客",
-  description: () => "陈思诚的博客文章",
+  title: () => author+"|博客",
+  description: () => author+"的博客文章",
 })
 </script>

@@ -1,8 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-var mySiteBase = '/sinablog-chensicheng1978/';
+var mySiteBase = '/sinablog-chensicheng1978/';//github repository name
 export default defineNuxtConfig({
   app: {
     baseURL: mySiteBase,
+    author: '陈思诚',
     head: {
       meta: [
         { charset: 'utf-8' },

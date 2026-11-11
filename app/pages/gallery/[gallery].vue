@@ -18,7 +18,7 @@
       <div class="pic-container-outer">
         <div class="pic-container-inner">
           <div class="col-4" v-for="(url) in picURLs">
-            <img :src="'/sinablog-chensicheng1978/'+url">
+            <img :src="baseURL+url">
           </div>
         </div>
       </div>
@@ -84,15 +84,22 @@
 <script setup>
 const route = useRoute()
 const currYear = computed(() => parseInt(route.params.gallery) || 1);
-
 const myYear = currYear.value;
 
-const {data}  = await useAsyncData(
-  `pic-${myYear}`, // 缓存键，可自定义
-  async () => {
-    return getPicByYear(queryCollection, myYear)
-  }
-)
+const config = useRuntimeConfig()
+// baseURL 默认是 '/'，如果部署在子路径，它会是 '/my-project/' 这样的值
+const baseURL = config.app.baseURL;
+const author = config.app.author;
+
+// const {data}  = await useAsyncData(
+//   `pic-${myYear}`, // 缓存键，可自定义
+//   async () => {
+//     return getPicByYear(queryCollection, myYear)
+//   }
+// )
+const { data } = await useFetch('/api/blog-images', {
+  query: { year: myYear, excludeGif: true } // 参数可以自由传递
+})
 
 const picByMonth = data.value.yearData;//[["10", ["asdf.jpg","fdsa.jpg"]],["09", ["asdf.jpg","fdsa.jpg"]]]
 const yearlyCount = data.value.yearlyCount;
@@ -102,7 +109,7 @@ definePageMeta( {
 });
 
 useSeoMeta({
-  title: () => "陈思诚|相册"+myYear,
-  description: () => "陈思诚的相册",
+  title: () => author+"|相册"+myYear,
+  description: () => author+"的相册",
 })
 </script>

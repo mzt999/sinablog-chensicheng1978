@@ -30,12 +30,17 @@
 </template>
 
 <script setup>
-const {data}  = await useAsyncData(
-  'pic', // 缓存键，可自定义
-  async () => {
-    return getPicByYear(queryCollection)
-  }
-)
+// const {data}  = await useAsyncData(
+//   'pic', // 缓存键，可自定义
+//   async () => {
+//     return getPicByYear2(queryCollection)
+//   }
+// )
+
+const { data } = await useFetch('/api/blog-images', {
+  query: { excludeGif: true } // 参数可以自由传递
+})
+
 const picByMonth = data.value.yearData;//[["10", ["asdf.jpg","fdsa.jpg"]],["09", ["asdf.jpg","fdsa.jpg"]]]
 const yearlyCount = data.value.yearlyCount;
 const currYear = yearlyCount[0].year;
@@ -43,10 +48,11 @@ const currYear = yearlyCount[0].year;
 definePageMeta( {
   layout: "page",
 });
-
+const config = useRuntimeConfig()
+const author = config.app.author;
 useSeoMeta({
-  title: () => "陈思诚|相册"+currYear,
-  description: () => "陈思诚的相册",
+  title: () => author+"|相册"+currYear,
+  description: () => author+"的相册",
 })
 </script>
 

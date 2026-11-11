@@ -10,7 +10,7 @@
         </div>
       </header>
       <ul class="nav-ul">
-        <li class="nav-link" v-for="(link, index) in friendSites"
+        <li class="nav-link" v-for="(link, index) in navLinks"
         :key="index">
           <nuxt-link v-if="link.target=='internal'"
           :to="link.path" class="no-decor-link">
@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-const friendSites = ref([{
+const navLinks = ref([{
     path: "/",
     title: "博客首页",
     target: "internal",

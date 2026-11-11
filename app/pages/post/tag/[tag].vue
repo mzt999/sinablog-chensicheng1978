@@ -73,9 +73,10 @@ const tags = data2.data.value.tags;
 definePageMeta( {
   layout: "post",
 });
-
+const config = useRuntimeConfig()
+const author = config.app.author;
 useSeoMeta({
-  title: () => `陈思诚|文章标签:${myTag}`,
-  description: () => `陈思诚|文章标签:${myTag}`,
+  title: () => `${author}|文章标签:${myTag}`,
+  description: () => `${author}|文章标签:${myTag}`,
 })
 </script>

@@ -56,9 +56,10 @@ for (let n = key_arr.length; n > 0; n--) {
 definePageMeta( {
   layout: "post",
 });
-
+const config = useRuntimeConfig()
+const author = config.app.author;
 useSeoMeta({
-  title: () => `陈思诚|博客分类:${myCategory}`,
-  description: () => `陈思诚|文章分类:${myCategory}`,
+  title: () => author+`|博客分类:${myCategory}`,
+  description: () => author+`|文章分类:${myCategory}`,
 })
 </script>

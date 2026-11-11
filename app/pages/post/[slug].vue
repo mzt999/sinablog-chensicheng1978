@@ -105,8 +105,10 @@ definePageMeta( {
   layout: "post",
 });
 
+const config = useRuntimeConfig()
+const author = config.app.author;
 useSeoMeta({
-  title: () => `陈思诚:${blog.title}`,
+  title: () => `${author}:${blog.title}`,
   date: () => blog.meta.date,
   description: () => blog.description,
 })

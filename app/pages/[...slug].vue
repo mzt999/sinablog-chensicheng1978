@@ -22,13 +22,14 @@ if (!data.value) {
 
 // 所有匹配到的路径都不存在，直接抛出 404
 // throw createError({ statusCode: 404, message: '页面未找到' })
-
+const config = useRuntimeConfig()
+const author = config.app.author;
 
 definePageMeta( {
   layout: "page",
 });
 useSeoMeta({
-  title: () => "陈思诚|"+page.title,
-  description: () => "陈思诚|"+page.description,
+  title: () => author+"|"+page.title,
+  description: () => author+"|"+page.description,
 })
 </script>
