@@ -8,29 +8,13 @@
 	    </a><br>
 	    如有任何疑问，欢迎 <a href="https://wj.qq.com/s2/14668810/d2da/" target="_blank">联系我<i class="fa fa-external-link"></i></a>
     </p>
-    <div class="go-top" @click="toTop" :class="{'go-top-hidden': isHidden}">
-        <div class="arrow"></div>
-        <div class="stick"></div>
-    </div>
+    
   </footer>
 </template>
 
 <script setup>
-const isHidden = ref(true);
 const { data: settings } = await useAsyncData('settings', () => {
   return queryCollection('settings').first()
 })
 const site_description = settings.value.site_description;
-function toTop() {
-	document.querySelector(".container-main").scrollIntoView({behavior: 'smooth'})
-}
-onMounted(() => {
-	window.addEventListener("scroll", function(){
-		if (window.scrollY > 199) {
-			isHidden.value = false;
-		} else {
-			isHidden.value = true;
-		}
-	});
-})
 </script>

@@ -9,7 +9,12 @@
 const route = useRoute()
 const currentPage = computed(() => parseInt(route.params.page) || 1);
 
-const perPage = 10;
+const { data: settings } = await useAsyncData('settings', () => {
+  return queryCollection('settings').first()
+})
+const author_name = settings.value.author_name;
+const perPage = settings.value.perPage;
+
 const { data } = await useAsyncData(
   `page-${currentPage.value}`, // 缓存键，可自定义
   async () => {
@@ -23,11 +28,6 @@ const totalPages = data.value.totalPages;
 definePageMeta( {
   layout: "page",
 });
-
-const { data: settings } = await useAsyncData('settings', () => {
-  return queryCollection('settings').first()
-})
-const author_name = settings.value.author_name;
 
 useSeoMeta({
   title: () => `${author_name}|博客|第${currentPage}页`,

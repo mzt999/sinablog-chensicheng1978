@@ -24,7 +24,7 @@ if (!data.value) {
 // throw createError({ statusCode: 404, message: '页面未找到' })
 
 
-const { data: settings } = await useAsyncData('settings', () => {
+const { data: settings } = await useAsyncData('my-settings', () => {
   return queryCollection('settings').first()
 })
 const author_name = settings.value.author_name;
