@@ -36,7 +36,9 @@ export default defineContentConfig({
       source: 'settings.yml', // 精确指向单个文件
       schema: z.object({
         author_name: z.string(),
+        site_name: z.string(),
         site_description: z.string(),
+        prevNextIsExcludeDate: z.boolean(),
         perPage: z.number(),
         navLinks: z.array(z.object({
           path: z.string(),
@@ -47,6 +49,14 @@ export default defineContentConfig({
         friendSites: z.array(z.object({
           href: z.string(),
           text: z.string(),
+        })),
+        footer: z.array(z.object({
+          text: z.string(),
+          link: z.object({
+            text: z.string(),
+            href: z.string(),
+            fa_class: z.string(),
+          }),
         })),
       })
     }),

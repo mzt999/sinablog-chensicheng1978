@@ -3,7 +3,7 @@
     <div class="nav-wrap">
       <header> 
         <nuxt-link class="no-decor-link nav-home" to="/">
-          {{author_name}}的博客
+          {{site_name}}
         </nuxt-link>
         <div class="nav-subtitle">
           {{site_description}}
@@ -38,6 +38,7 @@ const { data: settings } = await useAsyncData('settings', () => {
   return queryCollection('settings').first()
 })
 const author_name = settings.value.author_name;
+const site_name = settings.value.site_name;
 const site_description = settings.value.site_description;
 const navLinks = settings.value.navLinks;
 </script>

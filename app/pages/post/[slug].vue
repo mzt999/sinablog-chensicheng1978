@@ -77,6 +77,11 @@
 </template>
 
 <script setup>
+const { data: settings } = await useAsyncData('settings', () => {
+  return queryCollection('settings').first()
+})
+const author_name = settings.value.author_name;
+const prevNextIsExcludeDate = settings.value.prevNextIsExcludeDate;
 const route = useRoute()
 const slug = route.params.slug
 const {data} = await useAsyncData(
@@ -95,20 +100,20 @@ const data2 = await useAsyncData(
 )
 
 let prevNext = data2.data.value;
+
 for (let i = 0; i<2; i++) {
   if(prevNext[i]) {
-    prevNext[i].slug = prevNext[i].path.replace("/blog/","")
+    if(prevNextIsExcludeDate) {
+      prevNext[i].slug = prevNext[i].path.replace(/\/blog\/[0-9]{4}\-[0-9]{2}\-[0-9]{2}\-/,"")
+    } else {
+      prevNext[i].slug = prevNext[i].path.replace("/blog/","")
+    }
   }
 }
 
 definePageMeta( {
   layout: "post",
 });
-
-const { data: settings } = await useAsyncData('settings', () => {
-  return queryCollection('settings').first()
-})
-const author_name = settings.value.author_name;
 
 useSeoMeta({
   title: () => `${author_name}:${blog.title}`,

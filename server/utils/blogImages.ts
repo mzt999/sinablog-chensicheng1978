@@ -37,6 +37,7 @@ function urlToPicFilename(url: string): string {
   if (/^(data|blob|javascript):/i.test(url)) return ''
 
   const trimmed = url.trim()
+  if (!isValidImageUrl(trimmed)) return ''   // ← 非法直接丢弃
 
   // 先取路径末段（去掉 query/fragment），用于 .html 判断
   const clean = trimmed.split(/[?#]/)[0]
@@ -63,10 +64,69 @@ function urlToPicFilename(url: string): string {
   return trimmed
 }
 
+/** 剔除代码块与注释，避免误匹配代码里的 <img> 字符串 */
+function stripCodeBlocks(text: string): string {
+  const lines = text.split(/\r?\n/)
+  const out: string[] = []
+  let inFence = false
+  let fenceChar = ''
+  let fenceLen = 0
+
+  for (const line of lines) {
+    const trimmed = line.trim()
+    const m = trimmed.match(/^(`{3,}|~{3,})/)
+
+    // fenced code block 的开关行
+    if (m) {
+      if (!inFence) {
+        inFence = true
+        fenceChar = m[1][0]
+        fenceLen = m[1].length
+      } else if (m[1][0] === fenceChar && m[1].length >= fenceLen) {
+        inFence = false
+      }
+      out.push('')
+      continue
+    }
+
+    // 代码块内部：整行丢弃
+    if (inFence) {
+      out.push('')
+      continue
+    }
+
+    // 缩进代码块（4 空格或 Tab 开头）也跳过
+    if (/^(\t| {4})/.test(line)) {
+      out.push('')
+      continue
+    }
+
+    out.push(line)
+  }
+
+  let result = out.join('\n')
+  // 行内代码
+  result = result.replace(/`[^`\n]*`/g, '')
+  // HTML 注释
+  result = result.replace(/<!--[\s\S]*?-->/g, '')
+  return result
+}
+/** 判断候选 URL 是否“像”一个真实图片链接，过滤代码拼接残留 */
+function isValidImageUrl(u: string): boolean {
+  if (!u) return false
+  if (u.length > 2048) return false
+  // 含空白、引号、尖括号、方括号、花括号、反斜杠 → 非法
+  if (/[\s"'<>\[\]{}\\]/.test(u)) return false
+  // 含未编码的 %（后面不是两位十六进制）→ 非法
+  if (/%(?![0-9A-Fa-f]{2})/.test(u)) return false
+  return true
+}
+
 function extractImageFilenames(body: string): string[] {
   if (!body) return []
+  const text = stripCodeBlocks(body)   // 代码块剥离保留，作为第一道防线
   const urls: string[] = []
-
+  
   const mdRe = /!\[[^\]]*\]\(\s*(?:<([^>]+)>|([^\s)"']+))(?:\s+["'][^"']*["'])?\s*\)/g
   let m: RegExpExecArray | null
   while ((m = mdRe.exec(body))) urls.push(m[1] || m[2])
@@ -78,7 +138,10 @@ function extractImageFilenames(body: string): string[] {
     if (u) urls.push(u)
   }
 
-  return urls.map(urlToPicFilename).filter(Boolean)
+  return urls
+    .filter(isValidImageUrl)            // ← 新增：第二道防线
+    .map(urlToPicFilename)
+    .filter(Boolean)
 }
 
 function parseYearMonth(s: string): { year: number; month: number } | null {

@@ -1,11 +1,14 @@
 author_name: 陈思诚
+site_name: 陈思诚的博客
 site_description: 新浪博客内容备份(粉丝自用)
+prevNextIsExcludeDate: false
 perPage: 10
 navLinks: 
   - path: /
     title: 博客首页
     target: internal
     fa_class: fa-home
+# fa_class: font-awesome的class名称
   - path: /about
     title: 关于
     target: internal
@@ -29,3 +32,15 @@ friendSites:
     text: 新浪微博(半年可见)
   - href: https://mzt999.github.io/weibo-chensicheng1978
     text: 新浪微博备份(2009-2026)
+footer:
+  - text: 新浪博客内容备份(粉丝自用)
+  - text: 查看
+    link:
+      href: https://mzt999.github.io/weibo-chensicheng1978
+      text: 微博备份
+      fa_class: fa-weibo
+  - text: 如有任何疑问，欢迎
+    link:
+      href: https://wj.qq.com/s2/14668810/d2da/
+      text: 联系我
+      fa_class: fa-external-link
